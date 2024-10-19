@@ -41,20 +41,20 @@
 }
 
 .error {
-  @apply text-pink-1 max-w-[380px] text-center;
+  @apply text-blue-1 max-w-[380px] text-center;
 }
 
 .button {
-  @apply w-full px-5 py-3 mt-5 mb-7 rounded-xl cursor-pointer bg-pink-2 hover:bg-pink-1 text-white text-body-bold;
+  @apply w-full px-5 py-3 mt-5 mb-7 rounded-xl cursor-pointer bg-blue-2 hover:bg-blue-1 text-white text-body-bold;
 }
 
 .link {
-  @apply text-base-medium text-center text-white hover:text-pink-1;
+  @apply text-base-medium text-center text-white hover:text-blue-1;
 }
 
 /* Navbar */
 .navbar {
-  @apply top-0 z-10 sticky flex items-center justify-between py-3 px-10;
+  @apply top-0 z-10 sticky flex items-center justify-between py-4 px-8;
 }
 
 .nav-links {
@@ -62,7 +62,7 @@
 }
 
 .nav-link {
-  @apply text-white text-heading3-bold cursor-pointer hover:text-pink-1;
+  @apply text-white text-heading4-bold font-light cursor-pointer hover:text-blue-1;
 }
 
 .nav-right {
@@ -74,7 +74,7 @@
 }
 
 .icon {
-  @apply size-7 cursor-pointer text-white hover:text-pink-1;
+  @apply size-7 cursor-pointer text-white hover:text-blue-1;
 }
 
 .dropdown-menu {
@@ -82,15 +82,15 @@
 }
 
 .dropdown-menu > a {
-  @apply text-base-bold text-black-1 hover:text-pink-1 cursor-pointer;
+  @apply text-base-bold text-black-1 hover:text-blue-1 cursor-pointer;
 }
 
 .search {
-  @apply flex justify-between items-center gap-2 px-4 py-2 rounded-xl;
+  @apply flex justify-between items-center gap-1 px-2 py-2;
 }
 
 .input-search {
-  @apply w-40 bg-transparent outline-none text-body-medium text-white;
+  @apply w-40 bg-transparent focus:border-b-2 p-2 transition-all duration-100 outline-none  text-white;
 }
 
 /* Hero */
@@ -123,7 +123,7 @@
 }
 
 .hero-btn {
-  @apply flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl cursor-pointer bg-white text-body-bold hover:bg-pink-1 hover:text-white;
+  @apply flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl cursor-pointer bg-white text-body-bold hover:bg-blue-1 hover:text-white;
 }
 
 /* All movies */
