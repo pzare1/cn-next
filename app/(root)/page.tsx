@@ -7,14 +7,13 @@ import React from 'react'
 
 async function Home() {
   const genres = await fetchGenreMovies()
-  const example = genres.slice(0,3)
-  console.log('example',example)
+  const example = genres.slice(0,2)
   return (
     <>
       <Navbar/>
       <Hero/>
       <div className='all-movies'> 
-        {genres.map((genre: Genre) => (
+        {example.map((genre: Genre) => (
           <CategoryList key={genre.id} title={genre.name} movies={genre.movies}/>
         ))}
       </div>
