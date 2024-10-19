@@ -10,10 +10,8 @@ export const fetchTrending = async () => {
 export const fetchGenreMovies = async () => {
   const data = await getApiResponse("/genre/movie/list")
   const genres = data.genres
-  console.log('text',genres)
   for (const genre of genres) {
     const data = await getApiResponse(`/discover/movie?with_genres=${genre.id}`)
-    console.log('best',data)
     genre.movies = data.results
   }
 

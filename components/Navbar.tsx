@@ -15,17 +15,18 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const searchRef = useRef<HTMLInputElement>(null);
 
- const handleScroll = () => {
-    if(window.scrollY > 10){
-        setIsScrolled(true);
-    }else{
-        setIsScrolled(false);
+  const handleScroll = () => {
+    if (window.scrollY > 10) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
     }
- }
- useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return window.removeEventListener('scroll',handleScroll);
- }, [isScrolled])
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className={`navbar ${isScrolled && "bg-black-1"}`}>
+    <div className={`navbar ${isScrolled && "bg-black/80 transition-all duration-400"}`}>
       <Link className="max-w-[120px] max-h-[120px]" href="/">
         <img src="/assets/logo.png" alt="logo" className="logo" />
       </Link>

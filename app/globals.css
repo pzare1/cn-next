@@ -54,7 +54,7 @@
 
 /* Navbar */
 .navbar {
-  @apply top-0 z-10 sticky flex items-center justify-between py-4 px-8;
+  @apply top-0 z-10 sticky flex items-center justify-between py-1 px-8;
 }
 
 .nav-links {
@@ -148,7 +148,6 @@
 .movie-card {
   @apply relative h-24 min-w-48 sm:h-32 sm:min-w-60 md:h-36 md:min-w-72 cursor-pointer hover:outline-white;
 }
-
 .thumbnail {
   @apply object-cover w-full h-full rounded-lg;
 }
