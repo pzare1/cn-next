@@ -45,7 +45,7 @@ const Navbar = () => {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (search.trim()) {
-      router.push(`/search?q=${encodeURIComponent(search.trim())}`);
+      router.push(`/search/${search}`);
       setShowSearch(false);
     }
   };

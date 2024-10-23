@@ -161,10 +161,6 @@
   @apply fixed inset-0 z-30 bg-black-1 bg-opacity-95 w-full max-w-2xl mx-auto overflow-hidden overflow-y-scroll scrollbar-hide rounded-xl;
 }
 
-.modal-close {
-  @apply absolute right-5 top-5 z-40;
-}
-
 .modal-video {
   @apply top-0 left-0 w-full h-3/5;
 }
