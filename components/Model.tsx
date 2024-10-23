@@ -65,7 +65,7 @@ function Model({ movie, isClose }: Props) {
   return (
     <>
       <div className="modal m-3">
-        <div className="w-full bg-gray-900 h-12 flex justify-end items-center relative">
+        <div className="w-full bg-black h-12 flex justify-end items-center relative">
         <button className="mx-4 text-white/70" onClick={isClose}>
           <IoIosCloseCircleOutline className="w-7 h-7" />
         </button>

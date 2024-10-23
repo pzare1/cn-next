@@ -54,7 +54,7 @@
 
 /* Navbar */
 .navbar {
-  @apply top-0 z-10 sticky flex items-center justify-between py-1 px-8;
+  @apply top-0 z-10 sticky flex items-center justify-between px-8;
 }
 
 .nav-links {
@@ -90,7 +90,7 @@
 }
 
 .input-search {
-  @apply w-40 bg-transparent focus:border-b-2 p-2 transition-all duration-100 outline-none  text-white;
+  @apply w-40 bg-transparent focus:border-b-2 p-2 transition-all duration-100 outline-none text-white;
 }
 
 /* Hero */

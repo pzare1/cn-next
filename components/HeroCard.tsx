@@ -21,12 +21,14 @@ function HeroCard({trendingMovies} : {trendingMovies : Movie}) {
     <>
         <div className="hero">
             <div className="hero-bg">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black-1" />
                 <img 
                 src={`${baseImgUrl}${trendingMovies?.backdrop_path || trendingMovies?.poster_path}`}
                 alt="trending-movie"
                 className="hero-bg-image"
                 />
             </div>
+            
             <h1 className="hero-title">{trendingMovies?.title || trendingMovies?.name}</h1>
             <p className="hero-overview">{trendingMovies?.overview}</p>
             <div className="hero-btns">

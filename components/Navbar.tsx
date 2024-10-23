@@ -50,8 +50,8 @@ const Navbar = () => {
     }
   };
   return (
-    <div className={`navbar ${isScrolled && "bg-black/80 transition-all duration-400"}`}>
-      <Link className="max-w-[120px] max-h-[120px]" href="/">
+    <div className={`navbar ${isScrolled ? "bg-black/70 backdrop-blur-xl transition-all duration-400" : "bg-transparent"}`}>
+      <Link className="max-w-[100px] max-h-[100px]" href="/">
         <img src="/assets/logo.png" alt="logo" className="logo" />
       </Link>
 
@@ -61,7 +61,7 @@ const Navbar = () => {
             <input
               ref={searchRef}
               placeholder="Search movie..."
-              className="input-search text-xs"
+              className="input-search text-xs text-white placeholder:text-white"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
