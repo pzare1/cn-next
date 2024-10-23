@@ -4,10 +4,11 @@ import React from 'react'
 
 function page({params}: {params : {query: string}}) {
 const query = params.query
+const decodedInput = decodeURIComponent(query);
   return (
     <>
       <Navbar/>
-      <SearchResults query={query}/>
+      <SearchResults query={decodedInput}/>
     </>
   )
 }
