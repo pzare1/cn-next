@@ -8,12 +8,13 @@
     height: 3px;
     border-radius: 2px;
   }
+
 }
 
 /* Login & Register Pages */
 .auth {
   @apply h-screen w-full bg-cover bg-center;
-  background-image: url("/assets/netflix.jpg");
+  background-image: url("/assets/cinema.jpg");
 }
 
 .overlay {
@@ -68,6 +69,8 @@
 .nav-right {
   @apply flex gap-8 items-center;
 }
+
+
 
 .profile {
   @apply w-8 h-auto cursor-pointer;

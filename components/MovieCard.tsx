@@ -12,7 +12,7 @@ function MovieCard({movie}: {movie: Movie}) {
   return (
     <>
     <div className='movie-card' onClick={isOpen}>
-        <img className='thumbnail' alt={movie?.name || movie?.title}  src={`${baseImgUrl}${movie?.backdrop_path || movie?.poster_path}`}/>
+        <img className='thumbnail' alt={movie?.name || movie?.title}  src={movie?.backdrop_path || movie?.poster_path ? `${baseImgUrl}${movie?.backdrop_path || movie?.poster_path}`: '/assets/noimage.jpg'}/>
         <div className='border'></div>
     </div>
     {showModal && <Model movie={movie} isClose={isClose}/>}
