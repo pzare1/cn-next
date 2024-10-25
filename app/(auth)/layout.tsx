@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../globals.css";
+import ToastContext from "@context/ToastContext";
 
 const geistSans = localFont({
   src: "../fonts/Poppins-Regular.ttf",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black-1`}
       >
+        <ToastContext/>
         {children}
       </body>
     </html>

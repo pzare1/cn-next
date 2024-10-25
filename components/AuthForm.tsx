@@ -3,9 +3,10 @@
 import { VscAccount } from "react-icons/vsc";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { IoLockClosedOutline } from "react-icons/io5";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
+import { toast } from 'react-hot-toast'
 interface formData {
   username?: string;
   email: string;
@@ -13,6 +14,7 @@ interface formData {
 }
 
 function AuthForm({ type }: { type: "register" | "login" }) {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,8 +26,22 @@ function AuthForm({ type }: { type: "register" | "login" }) {
         : { email: "", password: "" },
   });
 
-  const onSubmitForm = (data:formData) => {
-    console.log(data)
+  const onSubmitForm: SubmitHandler<formData> = async(data) => {
+    let res;
+        if(type == "register"){
+         res = await fetch('/api/auth/register', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+         });
+         if(res.ok){
+            router.push('/login');
+         }else{
+            toast.error('this is not true')
+         }
+        }
   }
 
   return (

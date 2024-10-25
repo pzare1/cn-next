@@ -13,7 +13,9 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.4",
     "@mui/material": "^6.1.4",
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "mongodb": "^6.10.0",
     "mongoose": "^8.7.2",
     "next": "14.2.15",
     "next-auth": "^4.24.8",
@@ -25,6 +27,8 @@
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
