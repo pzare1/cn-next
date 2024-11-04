@@ -7,7 +7,7 @@ import React from 'react'
 
 async function Home() {
   const genres = await fetchGenreMovies()
-  const example = genres.slice(0,2)
+  const example = genres.slice(0,5)
   return (
     <>
       <Navbar/>

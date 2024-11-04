@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast'
+import { signIn } from "@node_modules/next-auth/react";
 interface formData {
   username?: string;
   email: string;
@@ -41,6 +42,17 @@ function AuthForm({ type }: { type: "register" | "login" }) {
          }else{
             toast.error('this is not true')
          }
+        }
+        if(type == "login"){
+          res = await signIn('credentials',{
+            ...data,
+            redirect:false
+          });
+          if(res && res.ok){
+            router.push('/')
+          }else{
+            toast.error('user did not found')
+          }
         }
   }
 

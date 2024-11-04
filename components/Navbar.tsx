@@ -49,6 +49,9 @@ const Navbar = () => {
       setShowSearch(false);
     }
   };
+  const handleLogout = () => { 
+    signOut({ callbackUrl: '/login' })
+  }
   return (
     <div className={`navbar ${isScrolled ? "bg-black/70 backdrop-blur-xl transition-all duration-400" : "bg-transparent"}`}>
       <Link className="max-w-[100px] max-h-[100px]" href="/">
@@ -84,7 +87,7 @@ const Navbar = () => {
           <div className="dropdown-menu mx-2">
             <Link href="/">Home</Link>
             <Link href="/my-list">My List</Link>
-            <a>Log Out</a>
+            <a onClick={handleLogout}>Logout</a>
           </div>
         )}
       </div>

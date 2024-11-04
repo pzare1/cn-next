@@ -1,10 +1,9 @@
 import AuthForm from '@components/AuthForm'
-import React from 'react'
 
-function Login() {
+const Login = () => {
   return (
     <div>
-        <AuthForm type="login"/>
+      <AuthForm type="login"/>
     </div>
   )
 }
