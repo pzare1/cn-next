@@ -4,25 +4,33 @@ import { Movie, Video } from "@lib/types";
 import React, { useEffect, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { IoAddCircleOutline } from "react-icons/io5";
+import { CiCircleMinus } from "react-icons/ci";
 import { GrLanguage } from "react-icons/gr";
 import { FaRegStar } from "react-icons/fa";
-
-
+import { useSession } from "@node_modules/next-auth/react";
 
 interface Props {
   movie: Movie;
   isClose: () => void;
 }
-interface Genre{
-    name:string
+interface Genre {
+  name: string;
 }
-interface Country{
-    name:string
+interface Country {
+  name: string;
+}
+interface Profile {
+  email: string;
+  username: string;
+  favorites: number[];
 }
 
 function Model({ movie, isClose }: Props) {
   const [video, setvideo] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [user, setUser] = useState<Profile>();
+  const [isFavorite, setisFavorite] = useState<boolean>(false);
   const [countries, setCountries] = useState<Country[]>([]);
   const options = {
     method: "GET",
@@ -43,8 +51,8 @@ function Model({ movie, isClose }: Props) {
       if (data?.genres) {
         setGenres(data?.genres);
       }
-      if(data?.production_countries){
-        setCountries(data?.production_countries)
+      if (data?.production_countries) {
+        setCountries(data?.production_countries);
       }
       console.log("genres", genres);
       if (data?.videos) {
@@ -62,13 +70,32 @@ function Model({ movie, isClose }: Props) {
     fetchMovie();
   }, [movie]);
 
+  const { data: session } = useSession();
+  console.log("session", session);
+  const getUser = async () => {
+    try {
+      const res = await fetch(`/api/user/${session?.user?.email}`);
+      const data = await res.json();
+      setLoading(false);
+      setisFavorite(data.favorites.find((item: number) => item == movie.id ))
+      setUser(data);
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
+  };
+  useEffect(() => {
+    if(session){
+    getUser();
+    }
+  }, [session]);
+
   return (
     <>
       <div className="modal m-3">
         <div className="w-full bg-black h-12 flex justify-end items-center relative">
-        <button className="mx-4 text-white/70" onClick={isClose}>
-          <IoIosCloseCircleOutline className="w-7 h-7" />
-        </button>
+          <button className="mx-4 text-white/70" onClick={isClose}>
+            <IoIosCloseCircleOutline className="w-7 h-7" />
+          </button>
         </div>
         <iframe
           src={`https://www.youtube.com/embed/${video}?autoplay=1&mute=1&loop=1`}
@@ -83,9 +110,24 @@ function Model({ movie, isClose }: Props) {
                 {movie?.name || movie?.original_title}
               </p>
             </div>
-            <div className="flex justify-center items-center gap-x-2">
-              <p className="text-[14px]">Add To List</p>
-              <IoAddCircleOutline className="cursor-pointer text-blue-1" />
+            <div onClick={() => setisFavorite(!isFavorite)} className="flex justify-center items-center gap-x-2">
+              {isFavorite ? 
+              (
+                <>
+                <p className="text-[14px]">Remove From List</p>
+                <CiCircleMinus className="cursor-pointer text-red-500" />
+                </>
+              ) :
+              
+              (
+                <>
+                <p className="text-[14px]">Add To List</p>
+                <IoAddCircleOutline className="cursor-pointer text-blue-1" />
+                </>
+              )
+              
+              }
+
             </div>
           </div>
           <div className="flex flex-row justify-start bg-blue-1 w-fit p-2 rounded-md text-[12px]">
@@ -99,7 +141,7 @@ function Model({ movie, isClose }: Props) {
             <p className="text-justify">Popularity: {movie?.popularity}</p>
           </div>
           <div className="flex justify-start items-center space-x-2 mb-2">
-            <GrLanguage/>
+            <GrLanguage />
             {countries.map((country, index) => (
               <span key={index}>
                 {country.name}
@@ -108,7 +150,7 @@ function Model({ movie, isClose }: Props) {
             ))}
           </div>
           <div className="flex justify-start items-center space-x-2 my-2 text-xs">
-          <FaRegStar/>
+            <FaRegStar />
             <p className="text-justify">{movie?.vote_average}</p>
           </div>
           <div className="flex justify-start">
